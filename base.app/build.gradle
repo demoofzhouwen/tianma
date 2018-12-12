@@ -1,5 +1,6 @@
 apply plugin: "com.android.library"
-apply plugin: 'com.novoda.bintray-release'
+apply plugin: 'com.github.dcendents.android-maven'
+group='com.github.q1113225201'//最后一个是github账号
 def cfg = rootProject.ext.configuration // 配置
 def libs = rootProject.ext.libraries//库
 
@@ -26,34 +27,8 @@ android {
     lintOptions {
         abortOnError false
     }
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
 
 }
-task sourcesJar(type: Jar) {
-    from android.sourceSets.main.java.srcDirs
-    classifier = 'sources'
-}
-
-task javadoc(type: Javadoc) {
-    source = android.sourceSets.main.java.srcDirs
-    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
-}
-
-task javadocJar(type: Jar, dependsOn: javadoc) {
-    classifier = 'javadoc'
-    from javadoc.destinationDir
-}
-
-artifacts {
-  //  archives javadocJar
-    archives sourcesJar
-
-}
-
-
 dependencies {
     api fileTree(include: ['*.jar'], dir: 'libs')
     testImplementation 'junit:junit:4.12'
@@ -114,12 +89,4 @@ dependencies {
     api "com.squareup.retrofit2:converter-gson:${libs.retrofit}"
 
 }
-publish {
-    repoName = 'maven' //bintray仓库名
-    userOrg = 'zhou2395' //bintray注册的用户名
-    groupId = 'com.baselib' //compile引用时的第1部groupId
-    artifactId = 'mybasemvplib' //compile引用时的第2部分项目名
-    publishVersion = '1.0.0' //compile引用时的第3部分版本号
-    desc = 'This is a simple custom tab library for Android'
-    website = 'https://github.com/demoofzhouwen/tianma'
-}
+
