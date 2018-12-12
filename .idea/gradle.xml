@@ -10,6 +10,9 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/base.app" />
+            <option value="$PROJECT_DIR$/tianmahxdl" />
+            <option value="$PROJECT_DIR$/tianmayunxi" />
+            <option value="$PROJECT_DIR$/uilibrary" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

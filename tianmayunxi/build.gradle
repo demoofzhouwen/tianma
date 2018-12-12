@@ -1,0 +1,72 @@
+apply plugin: 'com.android.library'
+apply plugin: 'com.jakewharton.butterknife'
+def cfg=rootProject.ext.configuration // 配置
+def libs=rootProject.ext.libraries//库
+android {
+    compileSdkVersion cfg.compileSdkVersion
+
+
+
+
+    defaultConfig {
+        minSdkVersion cfg.minSdkVersion
+        targetSdkVersion cfg.targetSdk
+        versionCode cfg.versionCode
+        versionName cfg.versionName
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [moduleName: project.getName()]
+            }
+        }
+        buildConfigField "String", "API_URL", '"http://cx.ccqq111.top/api/"'
+        versionName "天马云息"
+        resValue "string", "app_name", "天马云息"
+        manifestPlaceholders = [
+                APP_KEY: "tmyx",
+                RY_KEY : "8w7jv4qb82try",
+                RY_APPID  : "com.system.tmyx"
+        ]
+        multiDexEnabled true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    testImplementation 'junit:junit:4.12'
+    implementation 'com.github.demoofzhouwen:tianma:0.03'
+    // fresco 图片加载框架
+    implementation 'com.facebook.fresco:fresco:1.5.0'
+    implementation 'com.jakewharton:butterknife:8.5.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    //轮播图
+    implementation 'com.bigkoo:ConvenientBanner:2.1.4'
+    //arouter 路由跳转框架
+    annotationProcessor 'com.alibaba:arouter-compiler:1.1.4'
+    implementation 'com.github.1002326270xc:LayoutManager-FlowLayout:v1.4'
+    implementation 'com.github.hackware1993:MagicIndicator:1.5.0'
+    implementation 'com.qiniu:qiniu-android-sdk:7.3.+'
+    implementation 'com.zxy.android:tiny:0.0.6'
+    implementation 'com.android.support:design:27.1.0'
+    implementation project(':uilibrary')
+}

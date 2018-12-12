@@ -1,1 +1,1 @@
-include ':app', ':base.app'
+include ':app', ':base.app', ':tianmahxdl', ':tianmayunxi', ':uilibrary'
