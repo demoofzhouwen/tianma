@@ -1,6 +1,9 @@
 package com.system.myproject;
 
 
+import android.content.Context;
+
+import com.system.myproject.utils.SPUtils;
 
 public class BaseConfig {
     /**
@@ -35,5 +38,14 @@ public class BaseConfig {
      * 管理员标识
      */
     public static String TECENTTOKEN="tecentsign";
+
+    public static void setToken(Context context, String token) {
+        SPUtils.put(context,TOKEN,token);
+    }
+
+    public static String getToken(Context context){
+        return (String)  SPUtils.get(context, TOKEN, "");
+    }
+
 
 }
