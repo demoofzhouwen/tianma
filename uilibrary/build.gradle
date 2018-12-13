@@ -1,4 +1,6 @@
 apply plugin: 'com.android.library'
+apply plugin: 'com.github.dcendents.android-maven'
+group='com.github.uilibrary'//最后一个是github账号
 def cfg=rootProject.ext.configuration // 配置
 def libs=rootProject.ext.libraries//库
 android {
@@ -38,7 +40,6 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation 'com.android.support:appcompat-v7:28.0.0-rc02'
     testImplementation 'junit:junit:4.12'
     api 'com.github.AriesHoo.UIWidget:widget-core:3.2.6'
     api 'com.github.AriesHoo.UIWidget:widget-alert:3.2.5'
@@ -49,7 +50,8 @@ dependencies {
     }
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-    implementation project(':base.app')
+    implementation 'com.github.demoofzhouwen:tianma:0.03'
+
     api 'com.github.Awent:PhotoPick-Master:v1.095'
     api 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-14'
     api 'com.github.1002326270xc:LayoutManager-FlowLayout:v1.4'
